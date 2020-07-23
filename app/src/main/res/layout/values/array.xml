@@ -1,0 +1,6 @@
+<resources>
+    <string-array name="delivery_slots">
+        <item>7 Am to 9 Am</item>
+        <item>3 Pm to 5 Pm</item>
+    </string-array>
+</resources>

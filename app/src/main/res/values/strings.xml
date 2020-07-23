@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">BlueSky</string>
+
+    <string name="ok">OK</string>
+    <string name="no_internet">Network Connection unavailable..!!!</string>
+
+
+    <string name="something_wrong_happened">Somethin Wrong Happened, Please Try Again</string>
+    <string name="unable_to_connect">Unable to Connect. Please retry again</string>
+    <string name="access_denied_for_unauthorised_user">Access denied for unauthorised user</string>
+    <string name="system_error">Something happened at our system. Please retry again</string>
+    <string name="system_under_mainteance">Our services are under maintenance, please try again</string>
+    <string name="we_require_your_permission">We require your permission</string>
+    <string name="we_need_access_to_your_gallery">We need access to your gallery to upload Profile Image</string>
+    <string name="DENY">Deny</string>
+    <string name="GRANT">Grant</string>
+    <string name="we_need_access_to_your_location">Location access is required to get Trips and to complete them</string>
+    <string name="we_need_access_of_bg_location">We need to access your location in the background to function properly. Please Provide them</string>
+    <string name="fromCustomer">from Customer</string>
+
+
+</resources>
+

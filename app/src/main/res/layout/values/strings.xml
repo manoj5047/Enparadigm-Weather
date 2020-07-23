@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Retailer FMCG</string>
+    <string name="NODE_PRODUCTS">products</string>
+    <string name="add">Add</string>
+    <string name="_10">10</string>
+    <string name="_70_inr">70 INR</string>
+    <string name="haldirams">HALDIRAMS</string>
+    <string name="Order">order</string>
+    <string name="orders">orders</string>
+    <string name="Confirm_Order">Confirm Order</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Please_wait_while_we_load">Please, wait while we load the products</string>
+    <string name="Loading_products">Loading Products</string>
+    <string name="current_orders">Current Orders</string>
+    <string name="completed_orders">Completed Orders</string>
+    <string name="status">status</string>
+    <string name="ORDERS_FB_PATH">orders</string>
+    <string name="john_doe">John Doe</string>
+    <string name="retailer">Retailer</string>
+    <string name="mobilenumber">MobileNumber</string>
+    <string name="StoreName">Store Name</string>
+    <string name="Address">Address</string>
+    <string name="vehicleNumber">Vehicle Number</string>
+    <string name="NODE_RETAILER">retailers</string>
+    <string name="review_cart">Review Cart</string>
+    <string name="php_1270">Php 1270</string>
+    <string name="place_order">Place Order</string>
+    <string name="order_details">Order Details</string>
+    <string name="summary">Summary</string>
+    <string name="items">Items</string>
+    <string name="dummy_text">We\'re going to create our own implementation of a determinate progress bar by creating a custom view. The progress bar will have an indicator that represents a goal. We will define custom attributes, handle measuring and drawing, and animations.</string>
+    <string name="delivery_details">Delivery Details</string>
+    <string name="INVOICE">Invoice</string>
+    <string name="close">close</string>
+    <string name="daily_gulb_jamun">Daily Gulb_jamun</string>
+    <string name="Items">Items</string>
+    <string name="Products">Products</string>
+    <string name="OrderItems">Order Items</string>
+    <string name="ORDERS">Orders</string>
+</resources>
