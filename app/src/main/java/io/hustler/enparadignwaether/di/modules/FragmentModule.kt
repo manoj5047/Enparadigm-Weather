@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import dagger.Module
 import dagger.Provides
+import io.hustler.enparadignwaether.data.respository.CityRespository
 import io.hustler.enparadignwaether.data.respository.UserRepository
 import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.hustler.enparadignwaether.ui.home.HomeViewModel
@@ -21,7 +22,8 @@ class FragmentModule(private val fragment: Fragment) {
         compositeDisposable: CompositeDisposable,
         networkHelper: NetworkHelper,
         userRepository: UserRepository,
-        weatherRepository:WeatherRepository
+        weatherRepository:WeatherRepository,
+        cityRespository: CityRespository
     ): HomeViewModel =
         ViewModelProvider(fragment.requireActivity(),
             ViewModelProviderFactory(HomeViewModel::class) {
@@ -30,7 +32,7 @@ class FragmentModule(private val fragment: Fragment) {
                     compositeDisposable,
                     networkHelper,
                     userRepository,
-                    weatherRepository
+                    weatherRepository,cityRespository
                 )
             }).get(HomeViewModel::class.java)
 

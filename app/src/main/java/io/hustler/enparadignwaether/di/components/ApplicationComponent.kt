@@ -9,7 +9,10 @@ import io.hustler.enparadignwaether.utils.SharedPrefsUtils
 import io.hustler.enparadignwaether.utils.network.NetworkHelper
 import io.hustler.enparadignwaether.utils.rx.SchedulerProvider
 import dagger.Component
+import io.hustler.enparadignwaether.data.local.room.CityWeatherDatabase
+import io.hustler.enparadignwaether.data.local.room.dao.CityDao
 import io.hustler.enparadignwaether.data.model.Weather
+import io.hustler.enparadignwaether.data.respository.CityRespository
 import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.hustler.enparadignwaether.data.service.WeatherRestService
 import io.reactivex.disposables.CompositeDisposable
@@ -36,4 +39,7 @@ public interface ApplicationComponent {
     fun getUserrepositry(): UserRepository
     fun getWeatherRestService(): WeatherRestService
     fun getWeatherRepository(): WeatherRepository
+    fun getWeatherDb(): CityWeatherDatabase
+    fun getCityDao(): CityDao
+    fun getCityRepository():CityRespository
 }

@@ -1,6 +1,9 @@
 package io.hustler.enparadignwaether.ui.home
 
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
+import io.hustler.enparadignwaether.data.model.ResWeatherData
+import io.hustler.enparadignwaether.data.respository.CityRespository
 import io.hustler.enparadignwaether.data.respository.UserRepository
 import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.hustler.enparadignwaether.ui.base.BaseViewModel
@@ -15,13 +18,20 @@ class HomeViewModel(
     compositeDisposable: CompositeDisposable,
     networkHelper: NetworkHelper,
     private val userRepository: UserRepository,
-    private val weatherRepository: WeatherRepository
+    private val weatherRepository: WeatherRepository,
+    private val cityRepo: CityRespository
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper) {
     val weatherLiveData: MutableLiveData<Resource<Any>> = MutableLiveData()
     val cityNameLiveData: MutableLiveData<String> = MutableLiveData()
     val isMorningLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    val userCityLiveData: MutableLiveData<Int> = MutableLiveData()
     override fun onCreate() {
         getDayLight()
+        getUserCity()
+    }
+
+    private fun getUserCity() {
+        userCityLiveData.postValue(userRepository.getUserCityPreference())
     }
 
     private fun getDayLight() {
@@ -33,7 +43,7 @@ class HomeViewModel(
         }
     }
 
-    fun getWeatherData(lat: Double, long: Double) {
+    fun getWeatherData(lat: Double, long: Double,cityName:String) {
         if (checkIntenrnetConnectionWithMessage()) {
             weatherLiveData.postValue(Resource.loading("Getting Updated Weather Details."))
             compositeDisposable.addAll(
@@ -42,27 +52,53 @@ class HomeViewModel(
                     .subscribeOn(schedulerProvider.io())
                     .subscribe({
                         weatherLiveData.postValue(Resource.success(it))
-                        loadUpdateWeatherDataToDatabase()
+                        saveToDb(it,cityName)
+
                     }, {
                         handleNetworkError(it)
                         weatherLiveData.postValue(Resource.error(it.message))
                     })
             )
         } else {
-            loadWeatherDataFromDb()
+            weatherLiveData.postValue(Resource.error("Connection Not Available"))
+            loadWeatherDataFromDb(cityName)
         }
     }
 
-    private fun loadWeatherDataFromDb() {
-
+    private fun saveToDb(
+        it: ResWeatherData?,
+        cityName: String
+    ) {
+        cityRepo.saveNewWeatherData(it,cityName)
     }
 
-    private fun loadUpdateWeatherDataToDatabase() {
+    private fun loadWeatherDataFromDb(cityName: String) {
+        compositeDisposable.addAll(
+            cityRepo.getCityByName(cityName)
+                .subscribeOn(schedulerProvider.io())
+                .subscribe({
+                    val resWeatherData =
+                        Gson().fromJson(it.weather_data, ResWeatherData::class.java)
+                    weatherLiveData.postValue(Resource.success(resWeatherData))
+                }, {
+                    handleNetworkError(it)
+                    weatherLiveData.postValue(Resource.error("Offline Data UnAvailable"))
 
+                })
+        )
     }
+
+
 
     fun onCityNameChange(admin: String) {
         cityNameLiveData.postValue(admin)
     }
+
+    fun changeCityIndex(index: Int) {
+        userRepository.saveUserCityPreference(index)
+    }
+
+
+
 
 }

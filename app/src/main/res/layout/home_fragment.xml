@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true">
             <TextView
+                android:drawableStart="@drawable/ic_twotone_location_city_24"
                 android:id="@+id/tv_frag_home_current_city"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
@@ -39,7 +40,7 @@
                 android:drawablePadding="@dimen/paddin_16"
                 android:drawableEnd="@drawable/ic_twotone_arrow_drop_down_24"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_24"
+                android:textSize="@dimen/text_18"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/cityIcon"

@@ -31,7 +31,7 @@ class WeatherHomeFragment : BaseFragment<HomeViewModel>() {
     private lateinit var dailyForecastAdapter: DailyForecastAdapter
     private lateinit var todayForecastAdapter: TodayForecastAdapter
     private lateinit var citiesData: Cities
-    private var currentCityIndex = 0
+    var currentCityIndex = -1
 
     companion object {
         const val FRAG_TAG: String = "WEATHER_FRAG_TAG"
@@ -49,7 +49,6 @@ class WeatherHomeFragment : BaseFragment<HomeViewModel>() {
     }
 
     override fun setupView(view: View) {
-        getCitiesData()
         setupHourlyForeCastAdapter()
         setupDailyForeCastAdapter()
         setupForeCastAdapter()
@@ -57,17 +56,21 @@ class WeatherHomeFragment : BaseFragment<HomeViewModel>() {
             showCitiesDialog()
         }
         weather_refrehser.setOnRefreshListener {
-           if(null == citiesData){
-              loadNewCiyData(currentCityIndex)
-           }else{
-               getCitiesData()
-           }
+            if (null != citiesData) {
+                loadNewCiyData(currentCityIndex)
+            } else {
+                getCitiesData()
+            }
         }
 
     }
 
     override fun setupObservers() {
         super.setupObservers()
+        viewModel.userCityLiveData.observe(this, Observer {
+            currentCityIndex = if (it == -1) 0 else it
+            getCitiesData()
+        })
         viewModel.isMorningLiveData.observe(this, Observer {
             if (it) {
                 weatherRootView.setBackgroundColor(
@@ -107,7 +110,7 @@ class WeatherHomeFragment : BaseFragment<HomeViewModel>() {
                 Status.ERROR -> {
                     weather_refrehser.isRefreshing = false
 
-                    MessageUtils.showDismissableSnackBar(this.view, it.toString())
+                    MessageUtils.showDismissableSnackBar(this.view, it.data.toString())
                 }
                 Status.LOADING -> {
                     weather_refrehser.isRefreshing = true
@@ -233,19 +236,20 @@ class WeatherHomeFragment : BaseFragment<HomeViewModel>() {
         }
 
         this.citiesData = Gson().fromJson(json, Cities::class.java)
-        loadNewCiyData(0)
-        currentCityIndex = 0
+        loadNewCiyData(currentCityIndex)
         return citiesData
     }
 
     private fun loadNewCiyData(index: Int) {
         val city = citiesData.cities[index]
+        viewModel.onCityNameChange(city.admin)
+        viewModel.changeCityIndex(index)
+        currentCityIndex = index
         viewModel.getWeatherData(
             city.lat.toDouble(),
-            city.lng.toDouble()
+            city.lng.toDouble(),city.admin
         )
-        viewModel.onCityNameChange(city.admin)
-        currentCityIndex = index
+
     }
 
 }

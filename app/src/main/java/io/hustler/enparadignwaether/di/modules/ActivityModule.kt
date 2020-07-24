@@ -9,6 +9,8 @@ import io.hustler.enparadignwaether.utils.network.NetworkHelper
 import io.hustler.enparadignwaether.utils.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
+import io.hustler.enparadignwaether.data.local.room.dao.CityDao
+import io.hustler.enparadignwaether.data.respository.CityRespository
 import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.reactivex.disposables.CompositeDisposable
 
@@ -21,7 +23,8 @@ class ActivityModule(private val activity: AppCompatActivity) {
         compositeDisposable: CompositeDisposable,
         networkHelper: NetworkHelper,
         userRepository: UserRepository,
-        weatherRepository: WeatherRepository
+        weatherRepository: WeatherRepository,
+        cityRespository: CityRespository
     ): HomeViewModel =
         ViewModelProvider(activity,
             ViewModelProviderFactory(HomeViewModel::class) {
@@ -29,7 +32,7 @@ class ActivityModule(private val activity: AppCompatActivity) {
                     schedulerProvider,
                     compositeDisposable,
                     networkHelper,
-                    userRepository,weatherRepository
+                    userRepository,weatherRepository,cityRespository
                 )
             }).get(HomeViewModel::class.java)
 

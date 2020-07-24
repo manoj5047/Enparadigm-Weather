@@ -1,10 +1,13 @@
 package io.hustler.enparadignwaether.di.modules
 
 import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import io.hustler.enparadignwaether.BuildConfig
 import io.hustler.enparadignwaether.EnparadignApplication
+import io.hustler.enparadignwaether.data.local.room.CityWeatherDatabase
+import io.hustler.enparadignwaether.data.local.room.dao.CityDao
+import io.hustler.enparadignwaether.data.respository.CityRespository
 import io.hustler.enparadignwaether.data.respository.UserRepository
 import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.hustler.enparadignwaether.data.service.Networking
@@ -63,7 +66,7 @@ class ApplicationModule(private val enparadignApplication: EnparadignApplication
     @Singleton
     fun getWeatherRestService(): WeatherRestService =
         Networking.createWeatherRemoteService(
-           "https://api.openweathermap.org/data/2.5/",
+            "https://api.openweathermap.org/data/2.5/",
             enparadignApplication.cacheDir,
             10 * 1024 * 1024
         )
@@ -72,5 +75,23 @@ class ApplicationModule(private val enparadignApplication: EnparadignApplication
     @Singleton
     fun getCompositeDisposable(): CompositeDisposable = CompositeDisposable()
 
+
+    @Provides
+    @Singleton
+    fun getDb(): CityWeatherDatabase =
+        Room.databaseBuilder(
+            enparadignApplication.applicationContext!!,
+            CityWeatherDatabase::class.java, CityWeatherDatabase.DB_NAME
+        ).build()
+
+    @Provides
+    @Singleton
+    fun cityDao():CityDao =
+        getDb().cityDao()
+
+    @Provides
+    @Singleton
+    fun getCityRepository():CityRespository=
+        CityRespository(cityDao())
 
 }

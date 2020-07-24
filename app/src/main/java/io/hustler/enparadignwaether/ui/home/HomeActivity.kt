@@ -95,25 +95,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     override fun setupObservers() {
         super.setupObservers()
-        viewModel.weatherLiveData.observe(this, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    MessageUtils.showDismissableSnackBar(
-                        frame_layout,
-                        (it.data as ResWeatherData).timezone
-                    )
-                }
-                Status.ERROR -> {
-                    MessageUtils.showDismissableSnackBar(frame_layout, it.toString())
-                }
-                Status.LOADING -> {
-                    MessageUtils.showDismissableSnackBar(frame_layout, it.toString())
 
-                }
-                Status.UNKNOWN -> {
-
-                }
-            }
-        })
     }
 }
