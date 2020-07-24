@@ -10,6 +10,6 @@ import javax.inject.Singleton
 class WeatherRepository(private val weatherRestService: WeatherRestService) {
 
     fun getTodayWeather(lat: Double, long: Double): Single<ResWeatherData> {
-        return weatherRestService.getWeatherData(lat, long, EndPoints.EXCLUDE, EndPoints.API_KEY)
+        return weatherRestService.getWeatherData(lat, long,  EndPoints.API_KEY,EndPoints.UNITS)
     }
 }

@@ -19,7 +19,22 @@
     <string name="we_need_access_to_your_location">Location access is required to get Trips and to complete them</string>
     <string name="we_need_access_of_bg_location">We need to access your location in the background to function properly. Please Provide them</string>
     <string name="fromCustomer">from Customer</string>
+    <string name="cloudy_30_23_c">Cloudy 30 / 23 C</string>
+    <string name="_30">30</string>
+    <string name="degree">°</string>
+    <string name="_04_00">04:00</string>
 
 
+
+    <integer-array name="weatherIcons">
+        <item>@drawable/ic_sunrise</item>
+        <item>@drawable/ic_sunset</item>
+        <item>@drawable/ic_thermo_meter</item>
+        <item>@drawable/ic_thermo_meter</item>
+        <item>@drawable/ic_pressure_guage</item>
+        <item>@drawable/ic_dew_point</item>
+        <item>@drawable/ic_summer</item>
+        <item>@drawable/ic_wind_sock</item>
+    </integer-array>
 </resources>
 

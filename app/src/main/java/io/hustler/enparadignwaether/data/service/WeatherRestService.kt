@@ -14,8 +14,9 @@ interface WeatherRestService {
     fun getWeatherData(
         @Query(value = "lat") cityLat: Double,
         @Query(value = "lon") cityLong: Double,
-        @Query(value = "exclude") exclude: String,
-        @Query(value = "appid") apiKey: String
+//        @Query(value = "exclude") exclude: String,
+        @Query(value = "appid") apiKey: String,
+        @Query(value = "units") units: String
     ): Single<ResWeatherData>
 
 
@@ -23,6 +24,9 @@ interface WeatherRestService {
 
 public object EndPoints {
     const val GET_WEATHER_UPDATE = "onecall"
+
+    //QUERY PARAMS
+    const val UNITS = "metric"
     const val API_KEY = "fd31304e779bb2bcdbba2692b9810ef0"
     const val EXCLUDE = "hourly,daily"
 

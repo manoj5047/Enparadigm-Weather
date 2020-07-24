@@ -2,4 +2,13 @@
 <resources>
 
 
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_72">72sp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="paddin_16">16dp</dimen>
+    <dimen name="paddin_4">4dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="margin_4">4dp</dimen>
 </resources>

@@ -63,6 +63,7 @@ abstract class BaseViewModel(
 
     protected fun handleNetworkError(err: Throwable?) =
         err?.let {
+            TimberLogger.e("API ERROR",err.message.toString())
             networkHelper.castToNetworkError(throwable = err).run {
                 when (status) {
                     -1 ->

@@ -2,8 +2,8 @@ package io.hustler.enparadignwaether.data.model
 
 data class ResWeatherData(
     val current: Current,
-    val daily: List<Daily>,
-    val hourly: List<Hourly>,
+    val daily: ArrayList<Daily>,
+    val hourly: ArrayList<Hourly>,
     val lat: Double,
     val lon: Double,
     val timezone: String,
@@ -14,7 +14,7 @@ data class ResWeatherData(
 data class Current(
     val clouds: Int,
     val dew_point: Double,
-    val dt: Int,
+    val dt: Long,
     val feels_like: Double,
     val humidity: Int,
     val pressure: Int,
@@ -31,14 +31,14 @@ data class Current(
 data class Daily(
     val clouds: Int,
     val dew_point: Double,
-    val dt: Int,
+    val dt: Long,
     val feels_like: FeelsLike,
     val humidity: Int,
-    val pop: Int,
+    val pop: Double,
     val pressure: Int,
     val rain: Double,
-    val sunrise: Int,
-    val sunset: Int,
+    val sunrise: Long,
+    val sunset: Long,
     val temp: Temp,
     val uvi: Double,
     val weather: List<WeatherX>,
@@ -49,7 +49,7 @@ data class Daily(
 data class Hourly(
     val clouds: Int,
     val dew_point: Double,
-    val dt: Int,
+    val dt: Long,
     val feels_like: Double,
     val humidity: Int,
     val pop: Double,

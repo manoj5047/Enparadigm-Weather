@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_marginStart="@dimen/margin_4"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_rv_item_today_forecast_image"
+
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:gravity="start"
+        android:padding="@dimen/paddin_4"
+        android:text="@string/_04_00"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_today_forecast_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:gravity="start"
+        android:padding="@dimen/paddin_4"
+        android:text="@string/_04_00"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/iv_rv_item_today_forecast_image"
+        app:layout_constraintTop_toTopOf="@id/iv_rv_item_today_forecast_image" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_today_forecast_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_8"
+        android:gravity="start"
+        android:padding="@dimen/paddin_4"
+        android:text="@string/_04_00"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_rv_item_today_forecast_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_rv_item_today_forecast_head" />
+</androidx.constraintlayout.widget.ConstraintLayout>
