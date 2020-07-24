@@ -23,7 +23,9 @@
     <string name="_30">30</string>
     <string name="degree">°</string>
     <string name="_04_00">04:00</string>
-
+    <string name="bangalore">Bangalore</string>
+    <string name="select_your_city">Select your City.</string>
+    <string name="fetching_weather_updates">Fetching Weather Updates</string>
 
 
     <integer-array name="weatherIcons">

@@ -1,6 +1,8 @@
 package io.hustler.enparadignwaether.data.model
 
-class Cities : ArrayList<CitiesItem>()
+class Cities{
+    var cities: ArrayList<CitiesItem> = ArrayList()
+}
 
 data class CitiesItem(
     val admin: String,

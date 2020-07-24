@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialiconstwotone/wb_sunny/twotone_wb_sunny_24.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialiconstwotone/arrow_drop_down/twotone_arrow_drop_down_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -318,7 +318,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="f0f0f0" />
-                            <entry key="outputName" value="ic_twotone_wb_sunny_24" />
+                            <entry key="outputName" value="ic_twotone_arrow_drop_down_24" />
                           </map>
                         </option>
                       </PersistentState>

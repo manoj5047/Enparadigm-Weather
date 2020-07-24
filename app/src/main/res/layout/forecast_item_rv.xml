@@ -6,7 +6,8 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_marginStart="@dimen/margin_4"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layoutAnimation="@anim/layout_anim_climb_up">
 
     <ImageView
         android:id="@+id/iv_rv_item_today_forecast_image"

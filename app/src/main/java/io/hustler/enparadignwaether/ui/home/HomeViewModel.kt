@@ -8,6 +8,7 @@ import io.hustler.enparadignwaether.utils.common.Resource
 import io.hustler.enparadignwaether.utils.network.NetworkHelper
 import io.hustler.enparadignwaether.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import java.util.*
 
 class HomeViewModel(
     schedulerProvider: SchedulerProvider,
@@ -17,13 +18,22 @@ class HomeViewModel(
     private val weatherRepository: WeatherRepository
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper) {
     val weatherLiveData: MutableLiveData<Resource<Any>> = MutableLiveData()
-    val bangaloreLat = 12.971599
-    val bangaloreLong = 77.594566
+    val cityNameLiveData: MutableLiveData<String> = MutableLiveData()
+    val isMorningLiveData: MutableLiveData<Boolean> = MutableLiveData()
     override fun onCreate() {
-        getWeatherData(bangaloreLat, bangaloreLong)
+        getDayLight()
     }
 
-    private fun getWeatherData(lat: Double, long: Double) {
+    private fun getDayLight() {
+
+        if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) in 6..18) {
+            isMorningLiveData.postValue(true)
+        } else {
+            isMorningLiveData.postValue(false)
+        }
+    }
+
+    fun getWeatherData(lat: Double, long: Double) {
         if (checkIntenrnetConnectionWithMessage()) {
             weatherLiveData.postValue(Resource.loading("Getting Updated Weather Details."))
             compositeDisposable.addAll(
@@ -49,6 +59,10 @@ class HomeViewModel(
 
     private fun loadUpdateWeatherDataToDatabase() {
 
+    }
+
+    fun onCityNameChange(admin: String) {
+        cityNameLiveData.postValue(admin)
     }
 
 }

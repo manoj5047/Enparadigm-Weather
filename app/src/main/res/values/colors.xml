@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#00b4d8</color>
     <color name="colorPrimaryDark">#0096c7</color>
-    <color name="colorAccent">#03045e</color>
+    <color name="colorAccent">#0096c7</color>
     <color name="white">#ffffff</color>
     <color name="primary_dark">#00BFA6</color>
     <color name="black">#000000</color>
     <color name="red">#f1654c</color>
     <color name="day">#0096c7</color>
-    <color name="night">#1d3557</color>
+    <color name="night">#03045e</color>
 </resources>
 
