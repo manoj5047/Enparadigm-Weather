@@ -2,13 +2,14 @@ package io.hustler.enparadignwaether.di.modules
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import io.hustler.enparadignwaether.data.remote.firebase.UserRepository
+import io.hustler.enparadignwaether.data.respository.UserRepository
 import io.hustler.enparadignwaether.ui.home.HomeViewModel
 import io.hustler.enparadignwaether.utils.ViewModelProviderFactory
 import io.hustler.enparadignwaether.utils.network.NetworkHelper
 import io.hustler.enparadignwaether.utils.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
+import io.hustler.enparadignwaether.data.respository.WeatherRepository
 import io.reactivex.disposables.CompositeDisposable
 
 @Module
@@ -19,7 +20,8 @@ class ActivityModule(private val activity: AppCompatActivity) {
         schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
         networkHelper: NetworkHelper,
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        weatherRepository: WeatherRepository
     ): HomeViewModel =
         ViewModelProvider(activity,
             ViewModelProviderFactory(HomeViewModel::class) {
@@ -27,7 +29,7 @@ class ActivityModule(private val activity: AppCompatActivity) {
                     schedulerProvider,
                     compositeDisposable,
                     networkHelper,
-                    userRepository
+                    userRepository,weatherRepository
                 )
             }).get(HomeViewModel::class.java)
 

@@ -1,4 +1,4 @@
-package io.hustler.enparadignwaether.data.remote.firebase
+package io.hustler.enparadignwaether.data.respository
 
 import io.hustler.enparadignwaether.utils.SharedPrefsUtils
 import javax.inject.Singleton

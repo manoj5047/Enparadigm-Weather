@@ -22,6 +22,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -29,6 +30,7 @@ android {
     }
 
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -86,8 +88,6 @@ dependencies {
 
     /*VECTOR ANIM LIBS*/
     implementation 'com.airbnb.android:lottie:3.0.7'
-
-
 
 
     /*KOTLIN SUPPORT*/
